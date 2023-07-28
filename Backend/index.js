@@ -17,7 +17,8 @@ const app = express()
 const port = 3000;
 app.use(bodyParser.json());
 app.use(cors());
-const ChatHistory = [];
+let ChatHistory = [];
+let question = [];
 
 
 app.post("/test", async(req,res)=>{
@@ -29,7 +30,7 @@ app.post("/test", async(req,res)=>{
             messages: ChatHistory
         });
         ChatHistory.push(completion.data.choices[0].message);
-        console.log(ChatHistory);
+        console.log(completion.data.choices[0].message);
         res.send(completion.data.choices[0].message);
         }
         catch(err)
@@ -43,6 +44,8 @@ app.post("/start", async(req,res)=>{
     const params = req.query.sub;
     const {email} = req.body;
     let sub = "";
+    ChatHistory = [];
+    question = [];
     if(params === "Node")
     {
         sub = `Node.js
@@ -124,6 +127,7 @@ app.post("/start", async(req,res)=>{
         messages: ChatHistory
     });
     ChatHistory.push(completion.data.choices[0].message);
+    question.push(completion.data.choices[0].message.content);
     res.send(completion.data.choices[0].message);
     }
     catch(err)
@@ -137,7 +141,14 @@ app.post("/start", async(req,res)=>{
 app.post("/submit",async(req,res)=>{
     try{
         const {prompt} = req.body;
-        ChatHistory.push({ role: "user", content: `${prompt} . this is my answer keep a note of it  and don't provide feed back. just genrate the next question in the interview` }); 
+        let feedback = (req.query.feedback);
+        console.log(feedback)
+        if(feedback == 1)
+        feedback = "do";
+        else
+        feedback = "Don't";
+        ChatHistory.push({ role: "user", content: `${prompt} . this is my response to the above question keep a note of it  and ${feedback} provide a feed back and ask the next question in the interview.` });
+        console.log(ChatHistory,feedback);
 
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
@@ -148,19 +159,20 @@ app.post("/submit",async(req,res)=>{
     }
     catch(err)
     {
-        res.status(400).json({msg:err});
+        res.status(400).json({msg:err.message});
     }
 })
 
 app.post("/next",async(req,res)=>{
     try{
-        ChatHistory.push({ role: "user", content: "Ask the next question" }); 
+        ChatHistory.push({ role: "user", content: `Ask the next question and not be included in ${JSON.stringify(question)}` }); 
 
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: ChatHistory
     });
     ChatHistory.push(completion.data.choices[0].message);
+    question.push(completion.data.choices[0].message.content);
     res.send(completion.data);
     }
     catch(err)
