@@ -16,6 +16,7 @@
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
     "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "axios": "^1.4.0",
     "framer-motion": "^10.14.0",
     "react": "^18.2.0",
