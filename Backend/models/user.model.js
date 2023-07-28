@@ -10,9 +10,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  data: {
-    type: String,
-  },
+  data: [
+    {
+      question: {
+        type: String,
+      },
+      answer: {
+        type: String,
+      },
+    },
+  ],
 });
 
 const UserModel = mongoose.model("user", userSchema);

@@ -1,51 +1,65 @@
 const express = require("express");
 const userRouter = express.Router();
+const { UserModel } = require("../models/user.model");
+const { Configuration, OpenAIApi } = require("openai");
 
-const axios = require("axios");
+const config = new Configuration({
+  apiKey: process.env.AIKey,
+});
 
-const openAIUrl = "https://api.openai.com/v1/completions";
-const openAIKey = `${process.env.AIKey}`; // Replace with your actual OpenAI API key
+const openai = new OpenAIApi(config);
 
-const subjects = ["node js", "java", "mern"];
-
-userRouter.post("/api/start-interview", async (req, res) => {
-  const { email, subject } = req.body;
-
-  if (!subjects.includes(subject)) {
-    return res.status(400).json({ error: "Invalid subject selection." });
-  }
-
+userRouter.post("/start", async (req, res) => {
   try {
-    const prompt = `I want you to act as an interviewer. I will be the candidate and you will ask me the interview questions for the position of Backend Software Developer.
-    Generate random important interview questions for ${subject} for Backend Software Developer. and dont ask question related to experience\n`;
-    console.log(prompt);
-    const response = await axios.post(
-      openAIUrl,
-      {
-        model: "text-davinci-003",
-        prompt: prompt,
-        max_tokens: 50,
-        temperature: 0,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${openAIKey}`,
+    const { email, subject } = req.body;
+
+    const prompt = `generate a  one interview question on ${subject}`;
+
+    const completion = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: prompt }],
+    });
+
+    const question = completion.data.choices[0].message.content;
+
+    const newUser = new UserModel({
+      email,
+      subject,
+      data: [
+        {
+          question,
         },
-      }
-    );
+      ],
+    });
 
-    // console.log(response);
-    const filteredResponse = {
-      generatedQuestions: response.data.choices[0].text,
-    };
+    await newUser.save();
 
-    res.json(filteredResponse);
-  } catch (error) {
-    console.error("Error during question generation:", error);
-    res
-      .status(500)
-      .json({ error: "Something went wrong during question generation." });
+    res.send(question);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ msg: err });
+  }
+});
+
+userRouter.patch("/users/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+    const { answer } = req.body;
+
+    // Find the user by email ID
+    const user = await UserModel.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Save the updated user data
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ error: "Error updating user data" });
   }
 });
 
