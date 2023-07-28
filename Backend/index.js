@@ -1,12 +1,13 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require("cors");
+require("dotenv").config();
 const { connection } = require('mongoose');
 const { Configuration, OpenAIApi } = require('openai');
 
 const config = new Configuration({
-    apiKey : "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"
-})
+    apiKey : process.env.key
+});
 
 const openai = new OpenAIApi(config);
 
@@ -17,6 +18,25 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(cors());
 const ChatHistory = [];
+
+
+app.post("/test", async(req,res)=>{
+    const {prompt} = req.body;
+    ChatHistory.push({ role: "user", content: prompt });
+    try{
+        const completion = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: ChatHistory
+        });
+        ChatHistory.push(completion.data.choices[0].message);
+        console.log(ChatHistory);
+        res.send(completion.data.choices[0].message);
+        }
+        catch(err)
+        {
+            res.status(400).json({msg:err});
+        }
+});
 
 app.get('/', (req, res) => res.send('Hello World!'));
 app.post("/start", async(req,res)=>{
