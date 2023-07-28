@@ -1,0 +1,97 @@
+.screen-main-cont{
+    width: 100%;
+    height: 90vh;
+    background-color: #010103;
+}
+.screen-main-cont > div:nth-child(1){
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: white;
+}
+.screen-main-cont > div:nth-child(2){
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: space-between;
+    /* border-top: 2px solid white; */
+}
+.screen-main-cont > div:nth-child(2) > div:nth-child(1){
+    width: 80%;
+    height: 100%;
+    color: white;
+    /* border-right: 2px solid white; */
+}
+.screen-main-cont > div:nth-child(2) > div:nth-child(2){
+    width: 20%;
+    height: 100%;
+    color: white;
+    /* border-right: 2px solid red; */
+}
+
+.sidebar1-main-cont{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar1-main-cont > div:nth-child(1){
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+.sidebar1-main-cont > div:nth-child(2){
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 1px solid white; */
+}
+.sidebar1-main-cont > div:nth-child(1) > img{
+    width: 100%;
+    background-color: transparent;
+}
+.sidebar1-main-cont > div:nth-child(2) > div:nth-child(1){
+    width: 80%;
+    height: 70%;
+    border: 2px solid gray;
+    border-radius: 15px;
+    /* border-right: 1px solid white; */
+    /* border: 1px solid white; */
+}
+.sidebar1-main-cont > div:nth-child(2) > div:nth-child(2){
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid gray;
+    border-radius: 15px;
+}
+.screen-input-div > input{
+    width: 92%;
+    height: 100%;
+    color: white;
+    font-size: 1.1rem;
+    padding: 0px 15px;
+    text-decoration: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: transparent;
+}
+.screen-input-div > button{
+    width: 8%;
+    height: 100%;
+    border: 0px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: transparent;
+}
