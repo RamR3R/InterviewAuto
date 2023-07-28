@@ -5,9 +5,9 @@ import HomePage from '../Pages/HomePage'
 const AllRoutes = () => {
   return (
     <div>
-        <Routes>
-            <Route path='/' element={<HomePage />}/>
-        </Routes>
+        {/* <Routes>
+            <Route path='/' element={< HomePage />}/>
+        </Routes> */}
     </div>
   )
 }
