@@ -4,7 +4,7 @@ const userRouter = express.Router();
 const axios = require("axios");
 
 const openAIUrl = "https://api.openai.com/v1/completions";
-const openAIKey = "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"; // Replace with your actual OpenAI API key
+const openAIKey = `${process.env.AIKey}`; // Replace with your actual OpenAI API key
 
 const subjects = ["node js", "java", "mern"];
 
