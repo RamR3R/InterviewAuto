@@ -4,11 +4,41 @@ import { LiaJava } from "react-icons/lia";
 import { FaReact, FaAngular } from "react-icons/fa";
 import { DiNodejs } from "react-icons/di";
 import 'animate.css';
+import { useNavigate } from 'react-router-dom';
+import { Toast, useToast } from '@chakra-ui/toast';
 
 const LangSelectionPage = () => {
   const [select, setSelect] = useState("");
+  const toast = useToast()
+  const navigate = useNavigate()
 
-  console.log(select)
+
+  const handleSubmit = () => {
+    if(select===""){
+      toast({
+        title: 'Warning!!',
+        description: "Course not selected",
+        position: 'top',
+        status: 'warning',
+        duration: 3000,
+        isClosable: true,
+      })
+      return
+    }else{
+      localStorage.setItem("course",select)
+    toast({
+      title: 'Language Selected!!',
+      description: "Redirecting to the Interview Panel",
+      position: 'top',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    })
+    setTimeout(() => {
+      navigate("/screen")
+    }, 3500);
+    }
+  }
 
   return (
     <div className='lang-main-cont'>
@@ -42,12 +72,12 @@ const LangSelectionPage = () => {
             <div className='cont2'>
                 <select className='animate__animated animate__fadeInLeftBig' name="" onChange={(e)=> setSelect(e.target.value)}>
                     <option value="">Select Language</option>
-                    <option value="react">React</option>
-                    <option value="java">Java</option>
-                    <option value="node">NodeJs</option>
-                    <option value="angular">Angular</option>
+                    <option value="React">React</option>
+                    <option value="Java">Java</option>
+                    <option value="Node">NodeJs</option>
+                    <option value="Angular">Angular</option>
                 </select>
-                <button className='animate__animated animate__fadeInRightBig'>Proceed further</button>
+                <button className='animate__animated animate__fadeInRightBig' onClick={handleSubmit}>Proceed further</button>
             </div>
         </div>
     </div>
