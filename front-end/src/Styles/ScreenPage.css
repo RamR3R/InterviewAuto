@@ -133,6 +133,17 @@
     padding: 10px 0px;
     margin-top: 25px;
 }
+.sidebar2-main-cont > div:nth-child(1) > div > button:hover{
+    border: 2px solid green;
+}
+.checkbox{
+    width: 100%;
+    border: 2px solid gray;
+    padding: 10px 0px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
 
 .scroll-div{
     width: 90%;

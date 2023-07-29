@@ -4,23 +4,48 @@ import { Scrollbars } from "react-custom-scrollbars";
 import { FaAngular, FaReact } from "react-icons/fa";
 import { LiaJava } from "react-icons/lia";
 import { DiNodejs } from "react-icons/di";
+import TextMsg from "../components/TextMsg";
 
-const SideBar1 = ({ add }) => {
+const SideBar1 = () => {
   const [text, setText] = useState("");
+  const [data, setData] = useState([]);
 
-  let course = localStorage.getItem("course") || []
+  let course = localStorage.getItem("course") || [];
 
   const handleClick = () => {
-    add(text);
+    // const UserInputText = text;
+    const newTodo = {
+      id: Date.now(),
+      title: text,
+    };
+    setData([...data, newTodo]);
+    console.log(data);
     setText("");
+    // console.log(text)
   };
 
   return (
     <div className="sidebar1-main-cont">
       <div>
-      <div>
-        {course==="React" ? <FaReact className="seticon" style={{ color: "#7ddfff" }} /> : course==="Java" ? <LiaJava className="seticon" style={{ color: "white" }} /> : course==="Node" ? <DiNodejs className="seticon" style={{ color: "white" }} /> : course==="Angular" ? <FaAngular className="seticon" style={{ color: "white" }} /> : ""}   
-      </div>
+        <div>
+          {course === "React" ? (
+            <FaReact className="seticon" style={{ color: "#7ddfff" }} />
+          ) : course === "Java" ? (
+            <LiaJava
+              className="seticon"
+              style={{ color: "white", fontSize: "80px" }}
+            />
+          ) : course === "Node" ? (
+            <DiNodejs
+              className="seticon"
+              style={{ color: "#43c22b", fontSize: "115px" }}
+            />
+          ) : course === "Angular" ? (
+            <FaAngular className="seticon" style={{ color: "red" }} />
+          ) : (
+            ""
+          )}
+        </div>
         <div className="img-div">
           <img
             src="https://www.shutterstock.com/shutterstock/videos/1063759960/thumb/6.jpg?ip=x480"
@@ -33,40 +58,14 @@ const SideBar1 = ({ add }) => {
         <div>
           <Scrollbars>
             <div className="scroll-div">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-                minus asperiores reiciendis, commodi quia quidem ab, repellat
-                quasi incidunt quas est? Quisquam similique repellat quae,
-                expedita minima ut ipsum. Eligendi. At voluptatem ut quisquam
-                repellendus consequuntur quasi dignissimos, nulla totam mollitia
-                sed! Facilis cupiditate earum, similique, impedit provident
-                laboriosam dolores natus libero molestiae possimus ipsam quidem
-                fuga perspiciatis animi explicabo. maxime nam sit! Facilis fuga
-                odio repellat voluptate eius excepturi dolore omnis atque
-                libero? pturi ad! Hic, voluptatibus aut. Dolores, ab earum?
-                Voluptas vero dolore, voluptate distinctio Lorem ipsum dolor,
-                sit amet consectetur adipisicing elit. Iste minus asperiores
-                reiciendis, commodi quia quidem ab, repellat quasi incidunt quas
-                est? Quisquam similique repellat quae, expedita minima ut ipsum.
-                Eligendi. At voluptatem ut quisquam repellendus consequuntur
-                quasi dignissimos, nulla totam mollitia sed! Facilis cupiditate
-                earum, similique, impedit provident laboriosam dolores natus
-                libero molestiae possimus ipsam quidem fuga perspiciatis animi
-                explicabo. maxime nam sit! Facilis fuga odio repellat voluptate
-                eius excepturi dolore omnis atque libero? pturi ad! Hic,
-                voluptatibus aut. Dolores, ab earum? Voluptas vero dolore,
-                voluptate distinctioLorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Iste minus asperiores reiciendis, commodi quia
-                quidem ab, repellat quasi incidunt quas est? Quisquam similique
-                repellat quae, expedita minima ut ipsum. Eligendi. At voluptatem
-                ut quisquam repellendus consequuntur quasi dignissimos, nulla
-                totam mollitia sed! Facilis cupiditate earum, similique, impedit
-                provident laboriosam dolores natus libero molestiae possimus
-                ipsam quidem fuga perspiciatis animi explicabo. maxime nam sit!
-                Facilis fuga odio repellat voluptate eius excepturi dolore omnis
-                atque libero? pturi ad! Hic, voluptatibus aut. Dolores, ab
-                earum? Voluptas vero dolore, voluptate distinctio
-              </p>
+              <p>Hello! Are you ready for the interview?</p>
+              {data?.map((el, i) => {
+                return (
+                  <div key={i}>
+                    <TextMsg {...el} />
+                  </div>
+                );
+              })}
             </div>
           </Scrollbars>
         </div>
@@ -76,9 +75,9 @@ const SideBar1 = ({ add }) => {
             placeholder="send a message"
             name="text"
             value={text}
-            onChange={(e) => handleClick(e.target.value)}
+            onChange={(e) => setText(e.target.value)}
           />
-          <button>
+          <button onClick={handleClick}>
             <RiSendPlane2Fill
               style={{ marginLeft: "1rem", fontSize: "25px", color: "grey" }}
             />
