@@ -28,12 +28,7 @@
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
-    "react-speech-recognition": "^3.10.0",
-    "react-webcam": "^7.1.1",
-=======
     "tw-elements": "^1.0.0-beta2",
->>>>>>> 4d32786adf115ff1a1e6e346b793daf8dda5c017
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
