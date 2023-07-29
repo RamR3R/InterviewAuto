@@ -37,7 +37,8 @@ We understand the importance of data privacy and security. All interviews and ca
 ## Dashboard
 ![image](https://github.com/RamR3R/InterviewAuto/assets/92313981/9dd2f60b-ba00-40c4-8202-3edd1c4e91fd)
 
-#How It Works
+# How It Works
+
 Sign Up: Candidates and employers need to create an account on our website.
 
 Choose Interview Type: Employers select the interview format they want to conduct.
