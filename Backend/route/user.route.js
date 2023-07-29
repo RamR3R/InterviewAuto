@@ -104,7 +104,7 @@ userRoute.post("/start", async (req, res) => {
 
   ChatHistory.push({
     role: "user",
-    content: `Act as an interviewer and ask me exactly one question from the below topics. ${sub}`,
+    content: `Act as an interviewer for a Full stack Developer and ask me exactly one question from the below topics. ${sub}`,
   });
 
   try {
