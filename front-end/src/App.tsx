@@ -7,13 +7,11 @@ import HomePage from './Pages/HomePage';
 import SlideData from './components/SlideData';
 import SlideIcon from './components/SlideIcon';
 
-
 function App() {
   return (
     <div className="App">
     <Navbar/>
       <AllRoutes />
-     
       <Footer/>
     </div>
   );

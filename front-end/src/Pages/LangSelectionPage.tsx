@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../Styles/LangSelectionPage.css";
 import { LiaJava } from "react-icons/lia";
 import { FaReact, FaAngular } from "react-icons/fa";
 import { DiNodejs } from "react-icons/di";
 import 'animate.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Toast, useToast } from '@chakra-ui/toast';
 
 const LangSelectionPage = () => {
   const [select, setSelect] = useState("");
   const toast = useToast()
   const navigate = useNavigate()
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const initialCourse = searchParams.get("lang");
+  // const [sub, setSubject] = useState(initialCourse || "");
+  // console.log("17",sub)
+  // console.log(initialCourse)
 
+  // useEffect(() => {
+  //   let params = {
+  //     sub
+  //   };
+  //   setSearchParams(params);
+  // }, []);
 
   const handleSubmit = () => {
     if(select===""){
@@ -26,6 +37,8 @@ const LangSelectionPage = () => {
       return
     }else{
       localStorage.setItem("course",select)
+      // setSubject(select)
+      // console.log("lang",language)
     toast({
       title: 'Language Selected!!',
       description: "Redirecting to the Interview Panel",

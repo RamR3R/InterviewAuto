@@ -1,28 +1,65 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { RiSendPlane2Fill } from "react-icons/ri";
 import { Scrollbars } from "react-custom-scrollbars";
 import { FaAngular, FaReact } from "react-icons/fa";
 import { LiaJava } from "react-icons/lia";
 import { DiNodejs } from "react-icons/di";
 import TextMsg from "../components/TextMsg";
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
+import AiMsg from "../components/AiMsg";
 
 const SideBar1 = () => {
   const [text, setText] = useState("");
   const [data, setData] = useState([]);
+  const [aiData, setAiData] = useState([]);
+  const toast = useToast();
+
+  const inputref = useRef()
+  const you = "you"
+  const ai = "ai"
+
+  const [qna, setQna]= useState([])
 
   let course = localStorage.getItem("course") || [];
 
-  const handleClick = () => {
-    // const UserInputText = text;
-    const newTodo = {
-      id: Date.now(),
-      title: text,
-    };
-    setData([...data, newTodo]);
-    console.log(data);
-    setText("");
-    // console.log(text)
-  };
+  const handlesend = () => {
+    axios
+      .post(`http://localhost:3030/chat/start?sub=${course}`)
+      .then((res) => {
+        console.log(res.data);
+        setAiData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  // const handleClick = () => {
+  //   const newText = {
+  //     id: Date.now(),
+  //     title: text,
+  //   };
+  //   axios
+  //     .post(`http://localhost:3030/chat/submit`, newText)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setAiData(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  //   if (newText.title == "") {
+  //     toast({
+  //       title: "Please write something",
+  //       position: "top",
+  //       status: "warning",
+  //       duration: 3000,
+  //       isClosable: true,
+  //     });
+  //   } else {
+  //     setData([...data, newText]);
+  //     console.log(data);
+  //     setText("");
+  //   }
+  //   // console.log(text)
+  // };
 
   return (
     <div className="sidebar1-main-cont">
@@ -59,13 +96,19 @@ const SideBar1 = () => {
           <Scrollbars>
             <div className="scroll-div">
               <p>Hello! Are you ready for the interview?</p>
-              {data?.map((el, i) => {
-                return (
-                  <div key={i}>
-                    <TextMsg {...el} />
-                  </div>
-                );
-              })}
+              
+              <div>
+                {data?.map((el, i) => {
+                  return (
+                    <div key={i}>
+                      <TextMsg {...el} />
+                    </div>
+                  );
+                })}
+              </div>
+              <div>
+                {aiData}
+              </div>
             </div>
           </Scrollbars>
         </div>
@@ -83,6 +126,7 @@ const SideBar1 = () => {
             />
           </button>
         </div>
+        <button onClick={handlesend}>handle</button>
       </div>
     </div>
   );
