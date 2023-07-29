@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/user", userRoute);
+app.use("/chat", userRoute);
 
 app.listen(process.env.PORT, async () => {
   await connection;
