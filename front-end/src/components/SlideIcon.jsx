@@ -39,11 +39,11 @@ const SlideIcon = () => {
   return (
     <div style={{height:'100%'}}>
       {displayedData.map((item, index) => (
-       <div data-aos="zoom-in" style={{margin:' 80% 5%',display:'flex',justifyContent:'center',textAlign:'center'}}>{item==="BsQuestionOctagonFill"?
-        <BsQuestionOctagonFill size={'55%'} />:item==="TbBrandSpeedtest"?
-      <TbBrandSpeedtest size={'55%'}  />:item==="BsQuestionOctagonFill"?
-    <BsQuestionOctagonFill size={'55%'}/>:item==="MdFeedback"?
-  <MdFeedback size={'55%'}/>:<GrNotes size={'55%'}/>}
+       <div data-aos="zoom-in" style={{margin:' 75% 5%',display:'flex',justifyContent:'center',textAlign:'center'}}>{item==="BsQuestionOctagonFill"?
+        <BsQuestionOctagonFill size={'45%'} />:item==="TbBrandSpeedtest"?
+      <TbBrandSpeedtest size={'45%'}  />:item==="BsQuestionOctagonFill"?
+    <BsQuestionOctagonFill size={'45%'}/>:item==="MdFeedback"?
+  <MdFeedback size={'40%'}/>:<GrNotes size={'55%'}/>}
         </div>
       ))}
     </div>

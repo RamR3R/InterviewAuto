@@ -33,7 +33,7 @@ const SlideData = () => {
   return (
     <div >
       {displayedData.map((item, index) => (
-        <div style={{margin:' 7% 5%'}}>
+        <div style={{margin:' 6.8% 5%'}}>
         <p data-aos="fade-right" key={index}>{item}</p>
         </div>
       ))}
