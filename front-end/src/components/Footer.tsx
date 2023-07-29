@@ -58,6 +58,7 @@ const ListHeader = ({ children }:{children:ReactNode}) => {
 export default function Footer() {
   return (
     <Box
+    style={{marginTop:"0.5%"}}
       bg={useColorModeValue('black', 'black')}
       color={useColorModeValue('white', 'white')}>
       <Container as={Stack} maxW={'6xl'} py={10}>
