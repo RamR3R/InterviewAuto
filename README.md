@@ -37,6 +37,21 @@ We understand the importance of data privacy and security. All interviews and ca
 ## Dashboard
 ![image](https://github.com/RamR3R/InterviewAuto/assets/92313981/9dd2f60b-ba00-40c4-8202-3edd1c4e91fd)
 
+#How It Works
+Sign Up: Candidates and employers need to create an account on our website.
+
+Choose Interview Type: Employers select the interview format they want to conduct.
+
+Customize Questions: Employers can customize the interview questions or use pre-existing templates.
+
+Invite Candidates: Employers send interview invitations to candidates, who can take the interview at their convenience.
+
+AI-powered Interview: Candidates take the interview, and OpenAI's language model engages in a natural conversation.
+
+Real-Time Evaluation: Employers receive instant evaluation and insights on the candidate's performance.
+
+Make Informed Decisions: Based on the evaluation, employers can make informed hiring decisions.
+
 # Created By:
 ## Frontend
 1. Aniket Nagpure - Interview Panel and Language Page
