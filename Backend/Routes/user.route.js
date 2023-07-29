@@ -10,6 +10,8 @@ const openai = new OpenAIApi(config);
 
 let ChatHistory = [];
 
+let user = {}
+
 userRoute.post("/test", async (req, res) => {
   const { prompt } = req.body;
   ChatHistory.push({ role: "user", content: prompt });
@@ -28,7 +30,8 @@ userRoute.post("/test", async (req, res) => {
 
 userRoute.post("/start", async (req, res) => {
   const params = req.query.sub;
-  const { email } = req.body;
+  user.email = req.body.email;
+  user.course = params;
   let sub = "";
   ChatHistory = [];
   question = [];
@@ -114,7 +117,7 @@ userRoute.post("/start", async (req, res) => {
     });
     ChatHistory.push(completion.data.choices[0].message);
     question.push(completion.data.choices[0].message.content);
-    res.send(completion.data.choices[0].message);
+    res.send(completion.data.choices[0].message.content);
   } catch (err) {
     res.status(400).json({ msg: err });
   }
@@ -137,8 +140,8 @@ userRoute.post("/submit", async (req, res) => {
       model: "gpt-3.5-turbo",
       messages: ChatHistory,
     });
-    ChatHistory.push(completion.data.choices[0].message);
-    res.send(completion.data);
+    ChatHistory.push(completion.data.choices[0].message);    
+    res.send(completion.data.choices[0].message.content);
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }
@@ -159,7 +162,7 @@ userRoute.post("/next", async (req, res) => {
     });
     ChatHistory.push(completion.data.choices[0].message);
     question.push(completion.data.choices[0].message.content);
-    res.send(completion.data);
+    res.send(completion.data.choices[0].message.content);
   } catch (err) {
     res.status(400).json({ msg: err });
   }
@@ -187,7 +190,19 @@ userRoute.post("/logout", async (req, res) => {
       messages: ChatHistory,
     });
     ChatHistory.push(completion.data.choices[0].message);
-    res.send(completion.data);
+    let data = JSON.parse(completion.data.choices[0].message.content);
+    let result ={};
+    console.log(data);
+    
+    result.TechnicalKnowledge = data["Technical Knowledge"];
+    result.ProblemSolving = data["Problem-Solving Skills"];
+    result.CriticalThinking = data["Critical Thinking"];
+    result.CommunicationSkills = data["Communication Skills"];
+    result.UoF = data["Understanding of Fundamentals"];
+    console.log(result);
+    user.data = result;
+
+    res.send(result);
   } catch (err) {
     res.status(400).json({ msg: err });
   }
