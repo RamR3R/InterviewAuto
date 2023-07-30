@@ -6,6 +6,8 @@ import PageNotFound from '../Pages/PageNotFound'
 import ScreenPage from '../Pages/ScreenPage'
 import Dashboard from '../Pages/Dashboard'
 import Studymaterial from '../Pages/Studymaterial'
+import { PrivateRoute } from './PrivateRoute'
+import { Login } from '../Pages/Login'
 
 const AllRoutes = () => {
   return (
@@ -15,8 +17,15 @@ const AllRoutes = () => {
             <Route path='/language' element={<LangSelectionPage />}/>
             <Route path='*' element={<PageNotFound />}/>
             <Route path="/screen" element={<ScreenPage />} />
-            <Route path='/dashboard' element={<Dashboard/>} />
+            {/* <Route path='/dashboard' element={<Dashboard/>} /> */}
             <Route path='/study-material' element={<Studymaterial/>}/>
+            <Route path="/dashboard" element={
+            <PrivateRoute>
+                <Dashboard/>
+            </PrivateRoute>
+            }
+        /> 
+        <Route path="/login" element={<Login/>} />
         </Routes>
     </div>
   )

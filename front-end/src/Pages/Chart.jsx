@@ -3,6 +3,10 @@ import { initTE, Chart } from 'tw-elements';
 
 const RadarChart = () => {
   // Ref to the chart container element
+  const data =  localStorage.getItem('final-data');
+  const parseData=JSON.parse(data)
+  console.log(parseData)
+  console.log([parseData])
   const chartRef = useRef();
 
   useEffect(() => {
@@ -10,12 +14,12 @@ const RadarChart = () => {
     const dataRadar = {
       type: 'radar',
       data: {
-        labels: ['React', 'Java', 'Node', 'Dsa', 'Communication Skills', 'Interviewing Skill', 'Non Tech - First Impression ','Debugging'],
+        labels: ['CommunicationSkills', 'CriticalThinking', 'ProblemSolving', 'TechnicalKnowledge', 'UoF'],
         datasets: [
           {
             label: ' Meeting Score',
             
-            data: [10,10,10,10,10,10,10,10],
+            data: [parseData.CommunicationSkills,parseData.CriticalThinking,parseData.ProblemSolving,parseData.TechnicalKnowledge,parseData.UoF],
           },
         ],
       },
@@ -35,3 +39,20 @@ const RadarChart = () => {
 };
 
 export default RadarChart;
+
+
+// CommunicationSkills
+// : 
+// 4
+// CriticalThinking
+// : 
+// 6
+// ProblemSolving
+// : 
+// 5
+// TechnicalKnowledge
+// : 
+// 6
+// UoF
+// : 
+// 7
