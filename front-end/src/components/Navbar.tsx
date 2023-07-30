@@ -1,27 +1,24 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link, NavLink } from 'react-router-dom'
-
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../Images/logo.png";
 
 const navigation = [
-  { name: 'Dashboard', path: '/dashboard', current: false },
-  
-  { name: 'Language', path: '/language', current: false },
-  { name: 'Interview', path: '/screen', current: false },
-  { name: 'Study Material', path: '/study-material', current: false },
-]
-
-
+  { name: "Dashboard", path: "/dashboard", current: false },
+  { name: "Language", path: "/language", current: false },
+  { name: "Interview", path: "/screen", current: false },
+  { name: "Study Material", path: "/study-material", current: false },
+];
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar(): JSX.Element {
   return (
-    <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-2"  >
-      {({ open}: { open: boolean }) => (
+    <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-2">
+      {({ open }: { open: boolean }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
@@ -36,14 +33,17 @@ export default function Navbar(): JSX.Element {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
+              <div className="flex items-center justify-center sm:justify-start">
+                <div className="flex flex-shrink">
                   <Link to="/">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
+                    <div>
+                      <img
+                        src={logo}
+                        alt="Your Company"
+                        width="30%"
+                        style={{marginLeft: "-100px"}}
+                      />
+                    </div>
                   </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -53,15 +53,16 @@ export default function Navbar(): JSX.Element {
                         key={item.name}
                         to={item.path}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                          item.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </Link>
                     ))}
-                  
                   </div>
                 </div>
               </div>
@@ -100,7 +101,10 @@ export default function Navbar(): JSX.Element {
                         {({ active }: { active: boolean }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Your Profile
                           </a>
@@ -110,7 +114,10 @@ export default function Navbar(): JSX.Element {
                         {({ active }: { active: boolean }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Settings
                           </a>
@@ -121,11 +128,14 @@ export default function Navbar(): JSX.Element {
                           return (
                             <a
                               href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
                             >
                               Sign out
                             </a>
-                          )
+                          );
                         }}
                       </Menu.Item>
                     </Menu.Items>
@@ -143,10 +153,12 @@ export default function Navbar(): JSX.Element {
                   as="a"
                   href={item.path}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
@@ -156,5 +168,5 @@ export default function Navbar(): JSX.Element {
         </>
       )}
     </Disclosure>
-  )
+  );
 }

@@ -3,7 +3,7 @@ import "../Styles/ScreenPage.css";
 // import SideBar1 from "./SideBar1";
 import SideBar2 from "./SideBar2";
 import { RiSendPlane2Fill } from "react-icons/ri";
-import { Scrollbars } from "react-custom-scrollbars";
+import { Scrollbars } from "react-custom-scrollbars-2";
 import { FaAngular, FaReact } from "react-icons/fa";
 import { LiaJava } from "react-icons/lia";
 import { DiNodejs } from "react-icons/di";
