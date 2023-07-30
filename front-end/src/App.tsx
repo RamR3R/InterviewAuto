@@ -8,6 +8,7 @@ import SlideData from './components/SlideData';
 import SlideIcon from './components/SlideIcon';
 import Dashboard from './Pages/Dashboard';
 import Studymaterial from './Pages/Studymaterial';
+import {Login} from './Pages/Login';
 
 
 

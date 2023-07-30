@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import SkillsTable from './Skill';
 import MarksTable from './Marks';
 import RadarChart from './Chart';
@@ -6,21 +6,25 @@ import RadarChart from './Chart';
 
 const Dashboard = () => {
   // Sample data (Replace this with your data)
-  const [skillsData, setSkillsData] = useState([
-    { id: 1, skill: 'React', level: 'Advanced' },
-    { id: 2, skill: 'JavaScript', level: 'Intermediate' },
-    { id: 3, skill: 'HTML', level: 'Beginner' },
-  ]);
+  const data =  localStorage.getItem('final-data');
+  const parseData=JSON.parse(data)
+  // console.log(parseData)
+  // console.log(parseData.TechnicalKnowledge)
+  useEffect(() => {
+    // Get data from localStorage
+    //const storedData = localStorage.getItem('final-data');
+    //setData(storedData);
+  }, []);
+  
+  
 
   const [marksData, setMarksData] = useState([
-    { id: 1, subject: 'React', marks: 90 },
-    { id: 2, subject: 'Java', marks: 85 },
-    { id: 3, subject: 'Node', marks: 70 },
-    { id: 4, subject: 'Node', marks: 70 },
-    { id: 5, subject: 'Node', marks: 70 },
-    { id: 6, subject: 'Node', marks: 70 },
-    { id: 7, subject: 'Node', marks: 70 },
-    { id: 8, subject: 'Node', marks: 70 },
+    { id: 1, subject: 'CommunicationSkills', marks: parseData.CommunicationSkills?parseData.CommunicationSkills:0},
+    { id: 2, subject: 'CriticalThinking', marks: parseData.CriticalThinking?parseData.CriticalThinking:0 },
+    { id: 3, subject: 'ProblemSolving', marks: parseData.ProblemSolving?parseData.ProblemSolving:0 },
+    { id: 4, subject: 'TechnicalKnowledge', marks: parseData.TechnicalKnowledge?parseData.TechnicalKnowledge:0 },
+    { id: 5, subject: 'UoF', marks: parseData.UoF?parseData.UoF:0 },
+   
   ]);
 
   return (
@@ -37,3 +41,19 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+// CommunicationSkills
+// : 
+// 4
+// CriticalThinking
+// : 
+// 6
+// ProblemSolving
+// : 
+// 5
+// TechnicalKnowledge
+// : 
+// 6
+// UoF
+// : 
+// 7

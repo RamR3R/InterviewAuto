@@ -137,7 +137,7 @@ const ScreenPage = () => {
       isClosable: true,
     });
     setTimeout(() => {
-      navigate("/dashboard");
+       navigate("/dashboard");
     }, 3500);
   };
 
