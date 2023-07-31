@@ -13,6 +13,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import boy from "../Images/boy.jpg"
 import VideoChat from "../components/VideoChat";
+import { url } from "../url.js";
 
 const ScreenPage = () => {
   const [text, setText] = useState("");
@@ -28,12 +29,12 @@ const ScreenPage = () => {
   const you = "you";
   const ai = "ai";
 
-  const [qna, setQna] = useState([]);
+  const [response, setResponse] = useState([]);
 
   let course = localStorage.getItem("course") || "Interview";
 
-  const updateQandA = (from, value) => {
-    setQna((qna) => [...qna, { from, value }]);
+  const updateResponse = (from, value) => {
+    setResponse((response) => [...response, { from, value }]);
   };
 
   const handleStart = () => {
@@ -47,7 +48,7 @@ const ScreenPage = () => {
       });
     } else {
       axios
-        .post(`https://interviewauto.onrender.com/chat/start?sub=${course}`)
+        .post(`${url}/chat/start?sub=${course}`)
         .then((res) => {
           console.log(res.data);
           setAiData(res.data);
@@ -60,15 +61,15 @@ const ScreenPage = () => {
 
     const newText = inputref.current.value;
     const checked = instantRef.current.value;
-    updateQandA(you, newText);
+    updateResponse(you, newText);
     console.log(checked)
 
     if(!instantFeedback){
       axios
-      .post(`https://interviewauto.onrender.com/chat/submit?feedback=0`, newText)
+      .post(`${url}/chat/submit?feedback=0`, newText)
       .then((res) => {
         console.log(res.data);
-        updateQandA(ai, res.data);
+        updateResponse(ai, res.data);
         inputref.current.value = "";
       })
       .catch((err) => console.log(err));
@@ -86,10 +87,10 @@ const ScreenPage = () => {
       }
     }else{
       axios
-      .post(`https://interviewauto.onrender.com/chat/submit?feedback=1`, newText)
+      .post(`${url}/chat/submit?feedback=1`, newText)
       .then((res) => {
         console.log(res.data);
-        updateQandA(ai, res.data);
+        updateResponse(ai, res.data);
         inputref.current.value = "";
       })
       .catch((err) => console.log(err));
@@ -108,8 +109,8 @@ const ScreenPage = () => {
     }
   };
   
-  const renderContent = (qna) => {
-    const value = qna.value;
+  const renderContent = (response) => {
+    const value = response.value;
     if (Array.isArray(value)) {
       return value.map((el) => {
         return el;
@@ -122,7 +123,7 @@ const ScreenPage = () => {
   const handleEnd = () => {
     const payload = { logout: true };
     axios
-      .post(`https://interviewauto.onrender.com/chat/logout`, payload)
+      .post(`${url}/chat/logout`, payload)
       .then((res) =>  {
         console.log(res.data)
         localStorage.setItem("final-data",JSON.stringify(res.data))
@@ -196,7 +197,7 @@ const ScreenPage = () => {
                   </div>
                   : ""
                 }
-                    {qna.map((el, i) => {
+                    {response.map((el, i) => {
                       if (el.from == you) {
                         return (
                           <div style={{ display: "flex", marginTop: "5px", width: "100%" }}>
