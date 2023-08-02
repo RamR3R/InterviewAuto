@@ -1,58 +1,76 @@
-import React, { useRef, useEffect } from 'react';
-import SlideIcon from '../components/SlideIcon';
-import SlideData from '../components/SlideData';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-//import video1 from "https://www.youtube.com/watch?v=Cx5aNwnZYDc"
+import { Parallax } from "react-parallax";
+import Footer from "../components/Footer";
+import "../Styles/HomePage.css"
 
-interface VideoPlayerProps {
- 
-  width?: string;
-  height?: string;
-  margin?:string;
-}
-
-const HomePage: React.FC<VideoPlayerProps> = ({ width = '100%', height = '100vh' }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true; // Mute the video
-      videoRef.current.autoplay = true; // Autoplay the video
-    }
-  }, []);
+const HomePage = () => {
 
   return (
     <div>
-      
-      <header className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 pb-2 sm:px-6 lg:px-8 ">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 mt-5">
-            Welcome to MasaiGpt
-          </h1>
-        </div>
-      </header>
-      <div className="width:100% flex flex-row mx-auto my-10">
-        <div className="w-4/12 ml-6 pt-20">
-          <img  src="https://img.okezone.com/content/2023/05/19/54/2816476/mengenal-jenis-bot-mana-yang-cocok-untuk-war-tiket-FMyXZgtOVG.jpg" alt="chatbot" />
-        </div>
-        <div className="w-8/12  flex flex-row item-center justify-center">
-          <div className="w-1/12 item-center flex flex-col justify-center">
-            <SlideIcon/>
+      <div className="openai-page">
+        <Parallax
+          bgImage="https://mediatek-marketing.transforms.svdcdn.com/production/posts/Option-1-AI-banner.png?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1684471346&s=bd802b7c4fd69954afd4a0334e6279a5"
+          strength={150}
+        >
+          <div className="parallax-content">
+            <h1 style={{ margin: "10px" }}>OpenAI Interview Site</h1>
+            <div className="box">
+              <p className="p1">
+                Seamless AI-powered Interviews Gone are the days of scheduling
+                and coordinating interviews with human recruiters. Our website
+                offers fully automated interviews powered by OpenAI's advanced
+                language model. Candidates can now take interviews at their
+                convenience, and employers can assess candidates without any
+                time constraints.
+              </p>
+            </div>
           </div>
-          <div className="w-9/12 text-left">
-            <SlideData/>
+        </Parallax>
+        <Parallax
+          bgImage="https://img.freepik.com/premium-photo/artificial-intelligence-metaverse-background-banner-showing-ai-technology-generative-ai_620624-6967.jpg"
+          strength={300}
+        >
+          <div className="parallax-content">
+            <h1 style={{ color: "white" }}>Instant Feedback</h1>
+            <div className="box2">
+              <div>
+                <p>
+                  Realistic Interaction OpenAI's language model provides a
+                  remarkably realistic interview experience. Candidates will
+                  feel like they are interacting with an actual human
+                  interviewer, allowing them to showcase their skills and
+                  personality authentically. Instant Evaluation and Insights No
+                  more lengthy wait times for interview results!
+                </p>
+              </div>
+              <div></div>
+            </div>
           </div>
+        </Parallax>
+        <Parallax
+          bgImage="https://t4.ftcdn.net/jpg/05/88/10/29/360_F_588102949_M0FLcW9XrDp2siJ8NC3GLLRo2NL46TZU.jpg"
+          strength={100}
+        >
+          <div className="parallax-content">
+            <div className="box3">
+              <p style={{ fontWeight: "600" }}>
+                Tell me about your qualifications
+              </p>
+            </div>
+          </div>
+        </Parallax>
+        <div className="video-cont">
+          <video
+            width={"100%"}
+            height={"100%"}
+            src="https://frontend-payalsahuj.vercel.app/static/media/dashvedio.8890129732ce0913b62b.mp4"
+            autoPlay
+            muted
+            loop
+          ></video>
         </div>
-      </div>
-      <div >
-      <video   width={width} height={height} autoPlay muted>
-        <source style={{ objectFit: 'cover' }} src="https://frontend-payalsahuj.vercel.app/static/media/dashvedio.8890129732ce0913b62b.mp4" type="video/mp4" />
-     
-      </video>
       </div>
       <div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
