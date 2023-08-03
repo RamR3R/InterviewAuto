@@ -6,6 +6,9 @@
 3. For Front-end :  cd front-end npm run start
 4. For Back-end Server : cd Backend npm run server
 
+# Backend Api 
+https://interviewauto.onrender.com/chat
+
 # Introduction
 Welcome to our cutting-edge Auto Interview Website powered by OpenAI! 🚀 Are you tired of traditional job interview processes? Do you wish there was a more efficient and convenient way to conduct interviews? Look no further! Our platform harnesses the power of artificial intelligence to revolutionize the interview experience for both candidates and employers.
 
