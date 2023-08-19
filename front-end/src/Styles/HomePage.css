@@ -68,10 +68,10 @@
     border: 1px solid grey;
     padding: 10px;
     color: black;
-    margin-left: -150px;
+    margin-left: -120px;
     margin-top: 50px;
-    background-color: rgb(189, 189, 189);
-    opacity: 0.4;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.6;
     border-top-left-radius: 1px;
   }
   .video-cont{

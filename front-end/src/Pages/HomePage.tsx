@@ -1,15 +1,17 @@
 import { Parallax } from "react-parallax";
 import Footer from "../components/Footer";
-import "../Styles/HomePage.css"
+import "../Styles/HomePage.css";
+// import {dashvedio} from "./dashvedio.mp4";
 
 const HomePage = () => {
 
   return (
-    <div>
-      <div className="openai-page">
+    <div style={{zIndex: 100}}>
+      <div className="openai-page" style={{zIndex: -1}}>
         <Parallax
           bgImage="https://mediatek-marketing.transforms.svdcdn.com/production/posts/Option-1-AI-banner.png?w=2048&h=1075&q=80&auto=format&fit=crop&dm=1684471346&s=bd802b7c4fd69954afd4a0334e6279a5"
           strength={150}
+          style={{zIndex: -1}}
         >
           <div className="parallax-content">
             <h1 style={{ margin: "10px" }}>OpenAI Interview Site</h1>
@@ -28,6 +30,7 @@ const HomePage = () => {
         <Parallax
           bgImage="https://img.freepik.com/premium-photo/artificial-intelligence-metaverse-background-banner-showing-ai-technology-generative-ai_620624-6967.jpg"
           strength={300}
+          style={{zIndex: -1}}
         >
           <div className="parallax-content">
             <h1 style={{ color: "white" }}>Instant Feedback</h1>
@@ -49,6 +52,7 @@ const HomePage = () => {
         <Parallax
           bgImage="https://t4.ftcdn.net/jpg/05/88/10/29/360_F_588102949_M0FLcW9XrDp2siJ8NC3GLLRo2NL46TZU.jpg"
           strength={100}
+          style={{zIndex: -1}}
         >
           <div className="parallax-content">
             <div className="box3">
@@ -58,16 +62,11 @@ const HomePage = () => {
             </div>
           </div>
         </Parallax>
-        <div className="video-cont">
-          <video
-            width={"100%"}
-            height={"100%"}
-            src="https://frontend-payalsahuj.vercel.app/static/media/dashvedio.8890129732ce0913b62b.mp4"
-            autoPlay
-            muted
-            loop
-          ></video>
-        </div>
+        <Parallax bgImage="https://www.europarl.europa.eu/resources/library/images/20230607PHT95601/20230607PHT95601_original.jpg"
+          strength={300}
+          style={{zIndex: -1}}>
+            <div className="parallax-content"></div>
+        </Parallax>
       </div>
       <div>
         <Footer />

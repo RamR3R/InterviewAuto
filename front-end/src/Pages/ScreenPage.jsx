@@ -13,7 +13,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import boy from "../Images/boy.jpg"
 import VideoChat from "../components/VideoChat";
-import { url } from "../url.js";
+import { url } from "../Url/url.js";
 
 const ScreenPage = () => {
   const [text, setText] = useState("");
