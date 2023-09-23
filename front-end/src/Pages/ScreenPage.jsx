@@ -17,6 +17,7 @@ import boy from "../Images/boy.jpg"
 import VideoChat from "../components/VideoChat";
 import { url } from "../Url/url.js";
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
+import AutoTyping from "../components/AutoTyping";
 
 const ScreenPage = () => {
   const [text, setText] = useState("");
@@ -244,7 +245,7 @@ const ScreenPage = () => {
               <div>
                 <Scrollbars>
                   <div className="scroll-div">
-                    <p style={{ margin: "10px auto auto 47.5px", fontSize: "1.2rem"}}>Welcome to virtual Interview. Please click on Start interview !!</p>
+                    <p style={{ margin: "10px auto auto 47.5px", fontSize: "1.2rem"}}><AutoTyping /></p>
                     {aiData?.length > 0 ? 
                       <div style={{ display: "flex", marginTop: "15px", width: "100%" }}>
                         <div style={{width: "7%"}}>
