@@ -178,3 +178,12 @@
     background-color: transparent;
     font-size: 70px;
 }
+.waitingTime{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 20%;
+    font-size: 1.2rem;
+}
