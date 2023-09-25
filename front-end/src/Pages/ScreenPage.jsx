@@ -185,21 +185,21 @@ const ScreenPage = () => {
   if(count==1){
     // alert("You have changed the tab. 2 chances are remaining");
     toast({
-      title: "You have changed the tab",
-      description: "2 chances are remaining",
+      title: "You are not allowed to Move out from the Exam window",
+      description: "Warning / Alert No. 1",
       position: "top",
       status: "warning",
-      duration: 3000,
+      duration: 5000,
       isClosable: true,
     });
   }else if(count==2){
     // alert("You have changed the tab twice. This is final warning.");
     toast({
-      title: "You have changed the tab twice",
-      description: "This is final warning",
+      title: "This is last warning else you will be terminated",
+      description: "Warning / Alert No. 2",
       position: "top",
       status: "error",
-      duration: 3000,
+      duration: 5000,
       isClosable: true,
     });
   }else if(count==3){
