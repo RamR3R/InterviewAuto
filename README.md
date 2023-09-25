@@ -34,7 +34,7 @@ The user-friendly interface ensures candidates have a smooth and stress-free int
 We understand the importance of data privacy and security. All interviews and candidate information are kept strictly confidential and protected using industry-standard encryption measures.
 
 ## Home Page
-![image](https://github.com/RamR3R/InterviewAuto/assets/92313981/e1292f99-8b95-4ad5-b8c8-1de22d01792a)
+![image](https://user-images.githubusercontent.com/92313981/257917011-f7950c16-aeab-4ea0-9b48-03808cc35cc3.png)
 
 ## Language Page
 ![image](https://github.com/RamR3R/InterviewAuto/assets/92313981/3d2738f8-8561-4079-8564-af797e800c03)
@@ -66,10 +66,9 @@ Make Informed Decisions: Based on the evaluation, employers can make informed hi
 
 # Created By:
 ## Frontend
-1. Aniket Nagpure - Interview Panel and Language Page
-2. Santosh Sen - Dashboard, HomePage and Study-Material
+1. Aniket Nagpure - HomePage, Interview Panel and Language Page
+2. Santosh Sen - Dashboard and Study-Material
 
 ## Backend
 1. RamSundar Sivakumar
 2. Ankita Barad
-3. Shubham Pilane
