@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "../Styles/ScreenPage.css";
 // import SideBar1 from "./SideBar1";
 import SideBar2 from "./SideBar2";
@@ -20,6 +20,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import AutoTyping from "../components/AutoTyping";
+// import { useReactMediaRecorder } from "react-media-recorder";
 
 const ScreenPage = () => {
   const [text, setText] = useState("");
@@ -29,6 +30,14 @@ const ScreenPage = () => {
   // console.log(instantFeedback)
   const navigate = useNavigate();
   const toast = useToast();
+
+  // const {
+  //   status,
+  //   startRecording,
+  //   stopRecording,
+  //   mediaBlobUrl
+  // } = useReactMediaRecorder({ video: true });
+  // localStorage.setItem("video", mediaBlobUrl);
 
   // Copy to ClipBoard
   // const [textToCopy, setTextToCopy] = useState("");
@@ -166,6 +175,20 @@ const ScreenPage = () => {
     }, 3500);
   };
 
+  useEffect(()=> {
+    const handleClick = (e) => {
+      e.preventDefault();
+      alert('Pasting is not allowed.');
+    }
+
+    document.addEventListener('paste', handleClick);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('paste', handleClick);
+    };
+  },[])
+
   // const [count, setcount] = useState(0)
 
   // // Tab Warning on change
@@ -231,7 +254,7 @@ const ScreenPage = () => {
   const handleSave = () => {
     setIsEditing(false);
     // setTextToCopy(editedTranscript);
-    setText(editedTranscript)
+    setText(editedTranscript);
     resetTranscript(editedTranscript);
   };
 
@@ -440,6 +463,7 @@ const ScreenPage = () => {
               <div className="screen-input-div">
                 {isEditing ? (
                   <input
+                    id="edit"
                     ref={inputref}
                     type="text"
                     placeholder="send a message"
@@ -449,6 +473,7 @@ const ScreenPage = () => {
                   />
                 ) : (
                   <input
+                    id="inputText"
                     ref={inputref}
                     type="text"
                     placeholder="send a message"
