@@ -31,20 +31,6 @@ const ScreenPage = () => {
   const navigate = useNavigate();
   const toast = useToast();
 
-  // const {
-  //   status,
-  //   startRecording,
-  //   stopRecording,
-  //   mediaBlobUrl
-  // } = useReactMediaRecorder({ video: true });
-  // localStorage.setItem("video", mediaBlobUrl);
-
-  // Copy to ClipBoard
-  // const [textToCopy, setTextToCopy] = useState("");
-  // const [isCopied, setCopied] = useClipboard(textToCopy, {
-  //   successDuration: 1000,
-  // });
-
   // Editable transcript
   const [editedTranscript, setEditedTranscript] = useState("");
   const [isEditing, setIsEditing] = useState(false);
@@ -174,69 +160,6 @@ const ScreenPage = () => {
       navigate("/dashboard");
     }, 3500);
   };
-
-  useEffect(()=> {
-    const handleClick = (e) => {
-      e.preventDefault();
-      alert('Pasting is not allowed.');
-    }
-
-    document.addEventListener('paste', handleClick);
-
-    // Remove the event listener when the component unmounts
-    return () => {
-      document.removeEventListener('paste', handleClick);
-    };
-  },[])
-
-  // const [count, setcount] = useState(0)
-
-  // // Tab Warning on change
-  // useEffect(()=> {
-  //   const handleVisibilityChange = () => {
-  //     if (document.visibilityState === "visible") {
-  //       console.log("tab is active");
-  //     } else {
-  //       setcount((count)=> count + 1);
-  //     }
-  //   };
-
-  //   // Add a visibilitychange event listener to the document
-  //   document.addEventListener("visibilitychange", handleVisibilityChange);
-
-  //   // Clean up the event listener when the component unmounts
-  //   return () => {
-  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
-  //   };
-  // },[])
-
-  // if(count==1){
-  //   // alert("You have changed the tab. 2 chances are remaining");
-  //   toast({
-  //     title: "You are not allowed to Move out from the Exam window",
-  //     description: "Warning / Alert No. 1",
-  //     position: "top",
-  //     status: "warning",
-  //     duration: 5000,
-  //     isClosable: true,
-  //   });
-  // }else if(count==2){
-  //   // alert("You have changed the tab twice. This is final warning.");
-  //   toast({
-  //     title: "This is last warning else you will be terminated",
-  //     description: "Warning / Alert No. 2",
-  //     position: "top",
-  //     status: "error",
-  //     duration: 5000,
-  //     isClosable: true,
-  //   });
-  // }else if(count==3){
-  //   handleEnd(
-  //     setTimeout(() => {
-  //       navigate("/dashboard");
-  //    }, 3500)
-  //   )
-  // }
 
   // Start Listening
   const startListening = () =>
